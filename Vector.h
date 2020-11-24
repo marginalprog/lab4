@@ -6,15 +6,18 @@
 #include <iostream>
 #include <math.h>
 
-class Vektor {
+class Vector {
 private:
     int m_length;
     double* m_data;
 
 public:
-    Vektor();
 
-    Vektor(int length);
+    // конструктор по умолчанию  
+    Vector();
+
+    // конструктор изменяющий длину Vector
+    Vector(int length);
 
     void push_back(double value);
 
@@ -28,7 +31,7 @@ public:
 
     double& operator[](int index);
 
-    ~Vektor();
+    ~Vector();
 };
 
 #endif VEKTOR_H
