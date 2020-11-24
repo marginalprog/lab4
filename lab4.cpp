@@ -3,6 +3,7 @@
 #include "Vektor.h"
 
 int main() {
+    //виталя хуй, заебал орать
 
     return(0);
 }
