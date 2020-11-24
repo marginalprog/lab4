@@ -1,66 +1,56 @@
-﻿
+﻿// Лабораторная работа №4 <24.11.2020; 19:09>
+
 #include <math.h>
 #include <iostream>
+#include <cassert>
 
 class vektor {
 private:
-    int length;
-    double* data;
-public:
-    vektor() :length(0), data(nullptr) {};
+    int m_length;
+    double* m_data;
 
-    vektor(int leng) :
-        length(leng)
-    {
-        if (leng > 0) {
-            data = new double[leng];
-            for (int i = 0; i < leng; i++)
-                data[i]=0;
+public:
+    vektor() : m_length(0), m_data(nullptr) {};
+
+    vektor(int length) : m_length(length) {
+        assert(length >= 0);
+        if (length > 0) {
+            m_data = new double[length];
+            for (int i = 0; i < length; i++)
+                m_data[i]=0;
         }
         else
-            data = nullptr;
+            m_data = nullptr;
     }
 
-    void push_back(double push) {
-        int newlen = length + 1;
-        double* newdata = new double[newlen];
+    void push_back(double value) {
+        double* data = new double[m_length + 1];
 
-        for (int i = 0; i < length; i++)
-            newdata[i] = data[i];
+        for (int i = 0; i < m_length; i++)
+            data[i] = m_data[i];
+
+        data[m_length] = value;
+
+        m_data = data;
 
         delete[] data;
-        data = new double[newlen];
-
-        for (int i = 0; i < length; i++)
-            data[i] = newdata[i];
-        data[length] = push;  
-
-        delete[] newdata;
     }
 
-    void front() { std::cout << data[0] << std::endl; }
+    void front() { 
+        std::cout << m_data[0] << std::endl; 
+    }
 
-    void get(int x) {
-        for (int i = 0; i < length+x; i++)
-            data[i] = i + 1;
-        for (int i = 0; i < length+x; i++)
-            std::cout << data[i] << " ";
+    double& operator[](int index) {
+        assert(index >= 0 && index < m_length);
+        return m_data[index];
     }
 
     ~vektor() {
-        delete[] data;
+        delete[] m_data;
     }
 };
 
-int main()
-{
-    vektor line(5);
-    line.get(0);
-    std::cout << std::endl;
-    line.front();
-    line.push_back(5);
-    line.get(1);
-    std::cout << std::endl;
+int main() {
+    
     return(0);
-    // ХУЙ
 }
