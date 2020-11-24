@@ -12,8 +12,11 @@ public:
     vektor(int leng) :
         length(leng)
     {
-        if (leng > 0)
+        if (leng > 0) {
             data = new double[leng];
+            for (int i = 0; i < leng; i++)
+                data[i]=0;
+        }
         else
             data = nullptr;
     }
@@ -22,16 +25,14 @@ public:
         int newlen = length + 1;
         double* newdata = new double[newlen];
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i++)
             newdata[i] = data[i];
-        }
 
         delete[] data;
         data = new double[newlen];
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i++)
             data[i] = newdata[i];
-        }
         data[length] = push;  
 
         delete[] newdata;
