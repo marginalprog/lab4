@@ -62,4 +62,5 @@ int main()
     line.get(1);
     std::cout << std::endl;
     return(0);
+    // ХУЙ
 }
