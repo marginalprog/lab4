@@ -11,6 +11,7 @@ private:
     int m_length;
     double* m_data;
 
+public:
     Vektor();
 
     Vektor(int length);
@@ -18,6 +19,12 @@ private:
     void push_back(double value);
 
     void front();
+
+    void swap();
+
+    void pop_back();
+
+    void clear();
 
     double& operator[](int index);
 
