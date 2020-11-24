@@ -140,6 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="lab4.cpp" />
+    <ClCompile Include="Vektor.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Vektor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
