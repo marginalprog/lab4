@@ -13,14 +13,48 @@ Vector::Vector(int length) : m_length(length) {
         m_data = nullptr;
 }
 
-void Vector::push_back(double value) {
+void Vector::clear() {
+    delete[] m_data;
+    m_data = nullptr;
+    m_length = 0;
+}
+
+void Vector::erase(int index) {
+    m_length--;
+    double* data = new double[m_length];
+
+    for (int i = 0; i < m_length - 1; i++) {
+        if (i == index) {
+            data[i] = m_data[i + 1];
+            break;
+        }
+        data[i] = m_data[i];
+    }
+
+    for (int i = index + 1; i < m_length; i++)
+        data[i] = m_data[i + 1];
+
+    delete[] m_data;
+    m_data = new double[m_length];
+
+    for (int i = 0; i < m_length; i++)
+        m_data[i] = data[i];   
+
+    delete[] data;
+}
+
+void Vector::front() {
+    std::cout << m_data[0] << std::endl;
+}
+
+void Vector::insert(double value) {
     m_length++;
     double* data = new double[m_length];
 
     for (int i = 0; i < m_length - 1; i++)
-        data[i] = m_data[i];
+        data[i + 1] = m_data[i];
 
-    data[m_length - 1] = value;
+    data[0] = value;
 
     delete[] m_data;
     m_data = new double[m_length];
@@ -31,27 +65,30 @@ void Vector::push_back(double value) {
     delete[] data;
 }
 
-void Vector::front() {
-    std::cout << m_data[0] << std::endl;
-}
-
-double& Vector::operator[](int index) {
-    assert(index >= 0 && index < m_length);
-    return m_data[index];
-}
-
-void Vector::clear() {
-    delete[] m_data;
-    m_data = nullptr;
-    m_length = 0;
-}
-
 void Vector::pop_back() {
     m_length--;
     double* data = new double[m_length];
 
     for (int i = 0; i < m_length; i++)
         data[i] = m_data[i];
+
+    delete[] m_data;
+    m_data = new double[m_length];
+
+    for (int i = 0; i < m_length; i++)
+        m_data[i] = data[i];
+
+    delete[] data;
+}
+
+void Vector::push_back(double value) {
+    m_length++;
+    double* data = new double[m_length];
+
+    for (int i = 0; i < m_length - 1; i++)
+        data[i] = m_data[i];
+
+    data[m_length - 1] = value;
 
     delete[] m_data;
     m_data = new double[m_length];
@@ -78,6 +115,11 @@ void Vector::swap() {
         m_data[0] = m_data[m_length - i - 1];
         m_data[m_length - i - 1] = max;
     }
+}
+
+double& Vector::operator[](int index) {
+    assert(index >= 0 && index < m_length);
+    return m_data[index];
 }
 
 std::ostream& operator<< (std::ostream& out, Vector& object) {
