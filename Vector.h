@@ -41,7 +41,7 @@ public:
     // сортировка
     void swap();
 
-    // перезагрузка []
+    // перегрузка []
     double& operator[](int index);
 
     // вывод Vector
