@@ -10,4 +10,5 @@ int main() {
     vector.erase(2);
     std::cout << vector;
     return(0);
+
 }
