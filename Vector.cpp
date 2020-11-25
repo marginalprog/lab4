@@ -23,15 +23,11 @@ void Vector::erase(int index) {
     m_length--;
     double* data = new double[m_length];
 
-    for (int i = 0; i < m_length; i++) {
-        if (i == index) {
-            data[i] = m_data[i + 1];
-            break;
-        }
+    for (int i = 0; i < index; i++) {
         data[i] = m_data[i];
     }
 
-    for (int i = index + 1; i < m_length; i++)
+    for (int i = index ; i < m_length; i++)
         data[i] = m_data[i + 1];
 
     delete[] m_data;
