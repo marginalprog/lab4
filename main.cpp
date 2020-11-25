@@ -3,6 +3,9 @@
 #include "Vector.h"
 
 int main() {
+    Vector vector(5);
+
+    std::cout << vector;
 
     return(0);
 }

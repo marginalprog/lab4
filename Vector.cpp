@@ -3,27 +3,31 @@
 Vector::Vector() : m_length(0), m_data(nullptr) {};
 
 Vector::Vector(int length) : m_length(length) {
-    assert(length >= 0);
-    if (length > 0) {
-        m_data = new double[length];
-        for (int i = 0; i < length; i++)
-            m_data[i] = 0;
+    assert(m_length >= 0);
+    if (m_length > 0) {
+        m_data = new double[m_length];
+        for (int i = 0; i < m_length; i++)
+            m_data[i] = rand() % 9 +0;
     }
     else
         m_data = nullptr;
 }
 
 void Vector::push_back(double value) {
-    double* data = new double[m_length + 1];
+    m_length++;
+    double* data = new double[m_length];
 
-    for (int i = 0; i < m_length; i++)
+    for (int i = 0; i < m_length - 1; i++)
         data[i] = m_data[i];
 
-    data[m_length] = value;
+    data[m_length - 1] = value;
 
-    m_data = data;
+    delete[] m_data;
+    m_data = new double[m_length];
 
-    m_length++;
+    for (int i = 0; i < m_length; i++)
+        m_data[i] = data[i];
+
     delete[] data;
 }
 
@@ -43,12 +47,17 @@ void Vector::clear() {
 }
 
 void Vector::pop_back() {
-    double* data = new double[m_length - 1];
+    m_length--;
+    double* data = new double[m_length];
 
     for (int i = 0; i < m_length; i++)
         data[i] = m_data[i];
 
-    m_data = data;
+    delete[] m_data;
+    m_data = new double[m_length];
+
+    for (int i = 0; i < m_length; i++)
+        m_data[i] = data[i];
 
     delete[] data;
 }
@@ -66,9 +75,16 @@ void Vector::swap() {
             }
         }
         m_data[position] = m_data[0];
-        m_data[0] = m_data[m_length - 1];
-        m_data[m_length - 1] = max;
+        m_data[0] = m_data[m_length - i - 1];
+        m_data[m_length - i - 1] = max;
     }
+}
+
+std::ostream& operator<< (std::ostream& out, Vector& object) {
+    for (int i = 0; i < object.m_length; i++)
+        out << object.m_data[i] << " ";
+    out << "\n";
+    return out;
 }
 
 Vector::~Vector() {
