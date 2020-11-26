@@ -138,6 +138,37 @@ void Vector::resize(int n) {
     if (m_length > n) {
         m_length = n;
     double* data = new double[m_length];
+
+    for (int i = 0; i < m_length; i++) {
+        data[i] = m_data[i];
+    }
+
+    delete[] m_data;
+    m_data = new double[m_length];
+
+    for (int i = 0; i < m_length; i++) {
+        m_data[i] = data[i];
+    }
+
+    delete[] data;
+    }
+    else {
+        int first_length = m_length;
+        m_length = n;
+        double* data = new double[first_length];
+
+        for (int i = 0; i < first_length; i++) {
+            data[i] = m_data[i];
+        }
+        delete[] m_data;
+        double* m_data = new double[m_length];
+        for (int i = 0; i < first_length; i++) {
+            m_data[i] = data[i];
+        }
+        for (int i = first_length; i < m_length; i++) {
+            m_data[i] = rand() % 9 + 0;
+        }
+        delete[] data;
     }
 }
 void Vector::resize(int n, int value) {
@@ -159,7 +190,21 @@ void Vector::resize(int n, int value) {
         delete[] data;
     }
     else {
-    
+        int first_length = m_length;
+        m_length = n;
+        double* data = new double[first_length];
+        for (int i = 0; i < first_length; i++) {
+            data[i] = m_data[i];
+        }
+        delete[] m_data;
+        double* m_data = new double[m_length];
+        for (int i = 0; i < first_length; i++) {
+            m_data[i] = data[i];
+        }
+        for (int i = first_length; i < m_length; i++) {
+            m_data[i] = value;
+        }
+        delete[] data;
     }
    
 }
