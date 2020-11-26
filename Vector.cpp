@@ -134,44 +134,7 @@ void Vector::swap() {
     }
 }
 
-void Vector::resize(int n) {
-    if (m_length > n) {
-        m_length = n;
-    double* data = new double[m_length];
-
-    for (int i = 0; i < m_length; i++) {
-        data[i] = m_data[i];
-    }
-
-    delete[] m_data;
-    m_data = new double[m_length];
-
-    for (int i = 0; i < m_length; i++) {
-        m_data[i] = data[i];
-    }
-
-    delete[] data;
-    }
-    else {
-        int first_length = m_length;
-        m_length = n;
-        double* data = new double[first_length];
-
-        for (int i = 0; i < first_length; i++) {
-            data[i] = m_data[i];
-        }
-        delete[] m_data;
-        double* m_data = new double[m_length];
-        for (int i = 0; i < first_length; i++) {
-            m_data[i] = data[i];
-        }
-        for (int i = first_length; i < m_length; i++) {
-            m_data[i] = rand() % 9 + 0;
-        }
-        delete[] data;
-    }
-}
-void Vector::resize(int n, int value) {
+void Vector::resize(int n, const double value) {
     if (m_length > n) {
         m_length = n;
         double* data = new double[m_length];
@@ -190,20 +153,25 @@ void Vector::resize(int n, int value) {
         delete[] data;
     }
     else {
-        int first_length = m_length;
-        m_length = n;
-        double* data = new double[first_length];
-        for (int i = 0; i < first_length; i++) {
+        double* data = new double[n];
+
+        for (int i = 0; i < m_length; i++) {
             data[i] = m_data[i];
         }
+
+        for (int i = m_length; i < n; i++) {
+            data[i] = value;
+        }
+
+        m_length = n;
+
         delete[] m_data;
-        double* m_data = new double[m_length];
-        for (int i = 0; i < first_length; i++) {
+        m_data = new double[m_length];
+
+        for (int i = 0; i < m_length; i++) {
             m_data[i] = data[i];
         }
-        for (int i = first_length; i < m_length; i++) {
-            m_data[i] = value;
-        }
+
         delete[] data;
     }
    

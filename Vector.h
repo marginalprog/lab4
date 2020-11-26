@@ -48,10 +48,7 @@ public:
     void push_back(double value);
 
     // изменение размеров вектора
-    void resize(int n);
-
-    // изменение размеров вектора
-    void resize(int n, int value);
+    void resize(int n,const double value = rand()% 9 + 0);
 
     // сортировка
     void swap();
