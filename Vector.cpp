@@ -113,6 +113,13 @@ void Vector::swap() {
     }
 }
 
+void Vector::resize(int n) {
+    (m_length > n) {
+    m_length = n;
+    double* data = new double[m_length];
+}
+
+}
 void Vector::resize(int n, int value) {
     if (m_length > n) {
         m_length = n;

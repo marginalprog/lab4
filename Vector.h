@@ -20,11 +20,17 @@ public:
     // конструктор изменяющий длину Vector
     Vector(int length);
 
+    // последний элемент текущего вектора
+    void back();
+
     // очищение Vector
     void clear();
 
     // удаляет элемент вектора
     void erase(int index);
+
+    // проверка вектора на пустоту
+    bool empty();
 
     // вывод первого элемента 
     void front();
@@ -38,16 +44,17 @@ public:
     // добавление элемента в конец
     void push_back(double value);
 
+    // изменение размеров вектора
+    void resize(int n);
+
+    // изменение размеров вектора
+    void resize(int n, int value);
+
     // сортировка
     void swap();
 
-    void resize(int n, int value);
-
-    void back();
-
+    // размерность текущего вектора
     int size();
-
-    bool empty();
 
     // перегрузка []
     double& operator[](int index);
