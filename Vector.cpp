@@ -23,9 +23,8 @@ void Vector::erase(int index) {
     m_length--;
     double* data = new double[m_length];
 
-    for (int i = 0; i < index; i++) {
+    for (int i = 0; i < index; i++)
         data[i] = m_data[i];
-    }
 
     for (int i = index; i < m_length; i++)
         data[i] = m_data[i + 1];
@@ -47,10 +46,32 @@ void Vector::insert(double value) {
     m_length++;
     double* data = new double[m_length];
 
-    for (int i = 0; i < m_length - 1; i++)
+    for (int i = 0; i < m_length - 1; i++) 
         data[i + 1] = m_data[i];
 
     data[0] = value;
+
+    delete[] m_data;
+    m_data = new double[m_length];
+
+    for (int i = 0; i < m_length; i++)
+        m_data[i] = data[i];
+
+    delete[] data;
+}
+
+void Vector::insert(int it, int n, double value) {
+    m_length+=n;
+    double* data = new double[m_length];
+
+    for (int i = 0; i < it; i++) 
+        data[i] = m_data[i];
+
+    for (int i = it; i < it + n; i++)
+        data[i] = value;
+
+    for (int i = it+n; i < m_length; i++)
+        data[i] = m_data[i-n];
 
     delete[] m_data;
     m_data = new double[m_length];
@@ -114,11 +135,10 @@ void Vector::swap() {
 }
 
 void Vector::resize(int n) {
-    (m_length > n) {
-    m_length = n;
+    if (m_length > n) {
+        m_length = n;
     double* data = new double[m_length];
-}
-
+    }
 }
 void Vector::resize(int n, int value) {
     if (m_length > n) {

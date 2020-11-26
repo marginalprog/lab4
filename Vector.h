@@ -38,6 +38,9 @@ public:
     // добавляет элемент в начало вектора
     void insert(double value);
 
+    // добавляет n элементов, начиная с it, со знач. value
+    void insert(int it, int n, double value);
+
     // удаление элемента в конце Vector
     void pop_back();
 
