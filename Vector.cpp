@@ -114,6 +114,48 @@ void Vector::swap() {
     }
 }
 
+void Vector::resize(int n, int value) {
+    if (length > n) {
+        length = n;
+        std::cout << "Новый вектор:" << std::endl;
+        for (int i = 0; i < length; i++) {
+            std::cout << vector[i] << " ";
+        }
+        for (int i = n; i < length; i++) {
+            delete[i] vector;
+        }
+    }
+    else {
+        length = n;
+        std::cout << "Новый вектор:" << std::endl;
+        for (int i = 0; i < b; i++) {
+            std::cout << vector[i] << " ";
+        }
+        for (int i = b + 1; i < length + 1; i++) {
+            vector = new int[i];
+        }
+        for (int i = b + 1; i < length + 1; i++) {
+            vector[i] = value;
+            std::cout << vector[i] << " ";
+        }
+    }
+}
+
+void Vector::back() {
+    std::cout << m_data[m_length];
+}
+
+int Vector::size() {
+    return  m_length;
+}
+
+bool Vector::empty() {
+    if (m_length == 0)
+        return true;
+    else
+        return false;
+}
+
 double& Vector::operator[](int index) {
     assert(index >= 0 && index < m_length);
     return m_data[index];

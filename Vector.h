@@ -41,6 +41,14 @@ public:
     // сортировка
     void swap();
 
+    void resize(int n, int value);
+
+    void back();
+
+    int size();
+
+    bool empty();
+
     // перегрузка []
     double& operator[](int index);
 
