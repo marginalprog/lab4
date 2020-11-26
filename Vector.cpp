@@ -30,7 +30,6 @@ void Vector::erase(int index) {
     for (int i = index; i < m_length; i++)
         data[i] = m_data[i + 1];
 
-
     delete[] m_data;
     m_data = new double[m_length];
 
@@ -115,34 +114,31 @@ void Vector::swap() {
 }
 
 void Vector::resize(int n, int value) {
-    if (length > n) {
-        length = n;
-        std::cout << "Новый вектор:" << std::endl;
-        for (int i = 0; i < length; i++) {
-            std::cout << vector[i] << " ";
+    if (m_length > n) {
+        m_length = n;
+        double* data = new double[m_length];
+
+        for (int i = 0; i < m_length; i++) {
+            data[i] = m_data[i];
         }
-        for (int i = n; i < length; i++) {
-            delete[i] vector;
+
+        delete[] m_data;
+        m_data = new double[m_length];
+
+        for (int i = 0; i < m_length; i++) {
+            m_data[i] = data[i];
         }
+
+        delete[] data;
     }
     else {
-        length = n;
-        std::cout << "Новый вектор:" << std::endl;
-        for (int i = 0; i < b; i++) {
-            std::cout << vector[i] << " ";
-        }
-        for (int i = b + 1; i < length + 1; i++) {
-            vector = new int[i];
-        }
-        for (int i = b + 1; i < length + 1; i++) {
-            vector[i] = value;
-            std::cout << vector[i] << " ";
-        }
+    
     }
+   
 }
 
 void Vector::back() {
-    std::cout << m_data[m_length];
+    std::cout << m_data[m_length - 1];
 }
 
 int Vector::size() {
