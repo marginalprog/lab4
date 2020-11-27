@@ -179,11 +179,11 @@ int Vector::size() {
     return  m_length;
 }
 
-void Vector::empty() {
+bool Vector::empty() {
     if (m_length == 0)
-        std::cout<<true;
+        return true;
     else
-        std::cout<<false;
+        return false;
 }
 
 double& Vector::operator[](int index) {
