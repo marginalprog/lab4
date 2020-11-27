@@ -13,8 +13,8 @@ Vector::Vector(int length) : m_length(length) {
         m_data = nullptr;
 }
 
-void Vector::back() {
-    std::cout << m_data[m_length - 1];
+double Vector::back() {
+    return m_data[m_length - 1];
 }
 
 void Vector::clear() {
@@ -50,8 +50,8 @@ void Vector::erase(int index) {
     delete[] data;
 }
 
-void Vector::front() {
-    std::cout << m_data[0] << std::endl;
+double Vector::front() {
+    return m_data[0];
 }
 
 void Vector::insert(double value) {

@@ -21,7 +21,7 @@ public:
     Vector(int length);
 
     // последний элемент текущего вектора
-    void back();
+    double back();
 
     // очищение Vector
     void clear();
@@ -33,7 +33,7 @@ public:
     bool empty();
 
     // вывод первого элемента 
-    void front();
+    double front();
 
     // добавляет элемент в начало вектора
     void insert(double value);
