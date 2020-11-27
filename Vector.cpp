@@ -13,10 +13,21 @@ Vector::Vector(int length) : m_length(length) {
         m_data = nullptr;
 }
 
+void Vector::back() {
+    std::cout << m_data[m_length - 1];
+}
+
 void Vector::clear() {
     delete[] m_data;
     m_data = nullptr;
     m_length = 0;
+}
+
+bool Vector::empty() {
+    if (m_length == 0)
+        return true;
+    else
+        return false;
 }
 
 void Vector::erase(int index) {
@@ -118,16 +129,6 @@ void Vector::push_back(double value) {
     delete[] data;
 }
 
-void Vector::swap() {
-    double value;
-    for (int i = 0; i < m_length - 1; i++) {
-        heap(m_length - i);
-        value = m_data[0];
-        m_data[0] = m_data[m_length - i - 1];
-        m_data[m_length - i - 1] = value;
-    }
-}
-
 void Vector::resize(int n, const double value) {
     if (m_length > n) {
         m_length = n;
@@ -171,19 +172,18 @@ void Vector::resize(int n, const double value) {
    
 }
 
-void Vector::back() {
-    std::cout << m_data[m_length - 1];
-}
-
 int Vector::size() {
     return  m_length;
 }
 
-bool Vector::empty() {
-    if (m_length == 0)
-        return true;
-    else
-        return false;
+void Vector::swap() {
+    double value;
+    for (int i = 0; i < m_length - 1; i++) {
+        heap(m_length - i);
+        value = m_data[0];
+        m_data[0] = m_data[m_length - i - 1];
+        m_data[m_length - i - 1] = value;
+    }
 }
 
 double& Vector::operator[](int index) {
