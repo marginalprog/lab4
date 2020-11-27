@@ -63,6 +63,12 @@ public:
     friend std::ostream& operator<< (std::ostream& out, Vector& object);
 
     ~Vector();
+
+private:
+
+    // сортировка кучи 
+    void heap(int length);
+
 };
 
 #endif VEKTOR_H

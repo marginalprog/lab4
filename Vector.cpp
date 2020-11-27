@@ -117,20 +117,12 @@ void Vector::push_back(double value) {
 }
 
 void Vector::swap() {
-    double max;
-    int position;
+    double value;
     for (int i = 0; i < m_length - 1; i++) {
-        max = m_data[0];
-        position = 0;
-        for (int j = 1; j < m_length - i; j++) {
-            if (m_data[j] > max) {
-                max = m_data[j];
-                position = j;
-            }
-        }
-        m_data[position] = m_data[0];
+        heap(m_length - i);
+        value = m_data[0];
         m_data[0] = m_data[m_length - i - 1];
-        m_data[m_length - i - 1] = max;
+        m_data[m_length - i - 1] = value;
     }
 }
 
@@ -206,4 +198,24 @@ std::ostream& operator<< (std::ostream& out, Vector& object) {
 
 Vector::~Vector() {
     delete[] m_data;
+}
+
+void Vector::heap(int length) {
+    double value;
+    int position = 0;
+    while (position * 2 + 2 <= length) {
+        if (m_data[position] < m_data[position * 2 + 1] && position * 2 + 1 < length - 1) {
+            value = m_data[position];
+            m_data[position] = m_data[position * 2 + 1];
+            m_data[position * 2 + 1] = value;
+            position = 0;
+        }
+        if ((m_data[position] < m_data[position * 2 + 2]) && position * 2 + 1 < length - 1) {
+            value = m_data[position];
+            m_data[position] = m_data[position * 2 + 2];
+            m_data[position * 2 + 2] = value;
+            position = 0;
+        }
+        position++;
+    }
 }

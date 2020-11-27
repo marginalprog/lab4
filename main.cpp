@@ -3,7 +3,7 @@
 #include "Vector.h"
 
 int main() {
-    Vector vector(5);
+    Vector vector(30);
     std::cout << vector;
     //vector.insert(7.3);
     //std::cout << vector;
