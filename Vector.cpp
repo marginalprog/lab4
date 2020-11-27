@@ -20,6 +20,7 @@ void Vector::clear() {
 }
 
 void Vector::erase(int index) {
+    assert(index >= 0 && index <= m_length);
     m_length--;
     double* data = new double[m_length];
 
@@ -61,6 +62,7 @@ void Vector::insert(double value) {
 }
 
 void Vector::insert(int it, int n, double value) {
+    assert(it >= 0 && it <= m_length);
     m_length+=n;
     double* data = new double[m_length];
 
