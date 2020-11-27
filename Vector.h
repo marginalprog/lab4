@@ -50,11 +50,11 @@ public:
     // изменение размеров вектора
     void resize(int n,const double value = rand()% 9 + 0);
 
-    // сортировка
-    void swap();
-
     // размерность текущего вектора
     int size();
+
+    // сортировка
+    void swap();
 
     // перегрузка []
     double& operator[](int index);
@@ -65,10 +65,8 @@ public:
     ~Vector();
 
 private:
-
     // сортировка кучи 
     void heap(int length);
-
 };
 
 #endif VEKTOR_H
