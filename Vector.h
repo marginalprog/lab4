@@ -30,7 +30,7 @@ public:
     void erase(int index);
 
     // проверка вектора на пустоту
-    bool empty();
+    void empty();
 
     // вывод первого элемента 
     void front();
