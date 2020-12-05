@@ -6,7 +6,7 @@
 int main() {
     setlocale(LC_ALL, "");
 
-    Vector vector(10);
+    Vector vector(1000);
     std::cout << "Начальный массив: " << vector << "\n";
 
     {
@@ -18,7 +18,7 @@ int main() {
         double t = (end - start) / CLOCKS_PER_SEC;
         std::cout << "Время: " << t << "\n\n";
     }
-
+/*
     {
         std::cout << "Работа метода удаления одного элемента erase():" << std::endl;
         vector.erase(1);
@@ -62,9 +62,9 @@ int main() {
     {
         std::cout << "Работа метода определение пустоты контейнера empty():" << std::endl;
         if (vector.empty())
-            std::cout << "Контейнер пустой!" << "\n\n";
+            std::cout << "Контейнер пустой" << "\n\n";
         else
-            std::cout << "Контейнер полный!" << "\n\n";
+            std::cout << "Контейнер полный" << "\n\n";
     }
 
     {
@@ -80,13 +80,18 @@ int main() {
     }
 
     {
+        std::cout << "Работа метода по размеру массива size():" << std::endl;
+        std::cout << vector.size() << std::endl;
+    }
+
+    {
         std::cout << "Работа метода очистки clear():" << std::endl;
         vector.clear();
         if (vector.empty())
-            std::cout << "Контейнер пустой!" << "\n";
+            std::cout << "Контейнер пустой" << "\n";
         else
-            std::cout << "Контейнер полный!" << "\n";
+            std::cout << "Контейнер полный" << "\n";
     }
-
+    */
     return(0);
 }

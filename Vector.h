@@ -9,7 +9,7 @@
 
 class Vector {
 private:
-    int m_length;
+    int m_length, count, countif;
     double* m_data;
 
 public:
